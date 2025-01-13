@@ -23,7 +23,9 @@ const myLibrary = [
 ];
 
 document.addEventListener('DOMContentLoaded',() => {
-    console.log('Go code, go!');    
+    console.log('Go code, go!');
+
+    myLibrary.forEach((book) => { displayBookCard(book)});
 });
 
 
@@ -60,9 +62,8 @@ function createBookCard(book) {
     return htmlString;
 }
 
-function displayBookCard() {
+function displayBookCard(book) {
     // add book card's html to DOM
-
-
+    console.log(createBookCard(book));
 
 }
