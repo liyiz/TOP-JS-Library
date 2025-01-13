@@ -1,4 +1,12 @@
+
+
+
 const myLibrary = [];
+
+document.addEventListener('DOMContentLoaded',() => {
+    console.log('Go code, go!');    
+});
+
 
 function Book(author, title, pages, read) {
   // the constructor...
