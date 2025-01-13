@@ -47,8 +47,19 @@ function createBookCard(book) {
     
     let title = document.createElement('p'); 
     title.textContent = book.title;
+    let author = document.createElement('p'); 
+    author.textContent = `by ${book.author}`;
+    let pages = document.createElement('p'); 
+    pages.textContent = `${book.pages} pages`;
     
     bookCard.appendChild(title);
+    bookCard.appendChild(author);
+    bookCard.appendChild(pages);
+
+    bookCard.classList.add('card');
+
+    // book.read ? bookCard.classList.add('finished') : bookCard.classList.add('unfinished');
+    bookCard.classList.add(book.read ? 'finished' : 'unfinished');
 
     // <div class="card">
     // <p class="title">title</p>
@@ -56,13 +67,12 @@ function createBookCard(book) {
     // <p class="pages">pages</p>
     // <p class="read">yes/no</p>
     // </div>
-
     return bookCard;
 }
 
 function displayBookCard(book) {
     // add book card's html to DOM
-    console.log(createBookCard(book).innerHTML);
+    console.log(createBookCard(book).outerHTML);
     const container = document.querySelector('#container');
     const currentBook = createBookCard(book)
     container.appendChild(currentBook);

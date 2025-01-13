@@ -42,3 +42,15 @@ button {
     grid-template-rows: 
     grid-template-columns:  */
 }
+
+.card {
+    border: 1px solid red;
+}
+
+.card.finished {
+    border-left: 4px solid var(--color-primary);
+}
+
+.card.unfinished {
+    border-left: 4px solid var(--color-secondary);
+}
