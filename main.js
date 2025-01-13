@@ -1,7 +1,26 @@
 
 
 
-const myLibrary = [];
+const myLibrary = [
+    {
+        author: 'Yaa Gyasi',
+        title: 'Homegoing',
+        pages: 305,
+        read: false
+    },
+    {
+        author: 'R.F. Kuang',
+        title: 'Yellowface',
+        pages: 323,
+        read: true
+    },
+    {
+        author: 'Becky Chambers',
+        title: 'A Psalm for the Wild-Built',
+        pages: 151,
+        read: true
+    }
+];
 
 document.addEventListener('DOMContentLoaded',() => {
     console.log('Go code, go!');    
