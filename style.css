@@ -1,0 +1,44 @@
+:root {
+    --color-background: #121212;
+    --color-surface: #121212;
+    --color-error: #cf6679;
+    --color-primary: #bb86fc;
+    --color-primary-variant: #3700b3;
+    --color-secondary: #03dac5;
+    --color-on-primary: #000000;
+    --color-on-secondary: #000000;
+    --color-on-background: #ffffff;
+    --color-on-surface: #ffffff;
+    --color-on-error: #000000;
+}
+
+* {
+    padding: 0; margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+html, body {
+    background: var(--color-dark-grey);
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+}
+
+button {
+    border: none;
+}
+
+.container {
+
+    height: 100vh;
+
+    /* display: grid;
+    grid-template-rows: 
+    grid-template-columns:  */
+}
