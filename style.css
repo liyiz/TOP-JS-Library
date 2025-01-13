@@ -22,8 +22,8 @@ html {
 }
 
 html, body {
-    background: var(--color-dark-grey);
-    color: white;
+    background: var(--color-background);
+    color: var(--color-on-background);
 }
 
 ul {
