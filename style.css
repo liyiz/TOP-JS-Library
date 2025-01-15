@@ -8,7 +8,7 @@
     --color-on-primary: #000000;
     --color-on-secondary: #000000;
     --color-on-background: #ffffff;
-    --color-on-surface: #ffffff;
+    --color-on-surface: 255, 255, 255;
     --color-on-error: #000000;
 }
 
@@ -53,4 +53,11 @@ button {
 
 .card.unfinished {
     border-left: 4px solid var(--color-secondary);
+}
+
+.modal {
+    width: 320px;
+    height: 480px;
+    background-color: rgba(var(--color-on-surface), 0.2);
+    color: rgba(var(--color-on-surface));
 }
