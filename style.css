@@ -65,18 +65,17 @@ button.newbook {
 }
 
 .card {
-    border: 1px solid red;
     border-radius: 1rem;
     padding: 1.5rem;
     background-color: rgba(var(--color-on-surface), 0.1);
 }
 
 .card.finished {
-    border-left: 4px solid var(--color-primary);
+    border-left: 1rem solid var(--color-primary);
 }
 
 .card.unfinished {
-    border-left: 4px solid var(--color-secondary);
+    border-left: 1rem solid var(--color-secondary);
 }
 
 .modal {
@@ -92,6 +91,18 @@ button.newbook {
     color: rgba(var(--color-on-surface));
     border: none;
     padding: 20px;
+    border-radius: 1rem;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr;
+}
+
+.modal .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
 }
 
 .modal h1 {
@@ -102,4 +113,24 @@ button.newbook {
 .modal .description {
     font-size: 1rem;
     margin-bottom: 1rem;
+}
+
+.modal form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    align-items: center;
+}
+
+.modal .buttons {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modal button {
+    border-radius: 0.5rem;
+    background-color: var(--color-primary);
+    padding: 0.5rem 1rem;
 }

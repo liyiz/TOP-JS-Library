@@ -17,8 +17,10 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
         </button>
         <dialog class="modal" open>
-            <h1>New Book</h1>
-            <p class="description">Enter new book's details.</p>
+            <div class="header">
+                <h1>New Book</h1>
+                <p class="description">Enter new book's details.</p>
+            </div>
             <form action="#" method="post">
                 <div class="form-field">
                     <label for="author">Author</label>
@@ -31,6 +33,10 @@
                 <div class="form-field">
                     <label for="pages">Number of Pages</label>
                     <input id="pages" type="text" name="pages" />
+                </div>
+                <div class="buttons">
+                    <button type="submit">Confirm</button>
+                    <button id="cancel" type="reset">Cancel</button>
                 </div>
             </form>
         </dialog>
