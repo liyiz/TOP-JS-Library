@@ -47,10 +47,13 @@ function createBookCard(book) {
     
     let title = document.createElement('p'); 
     title.textContent = book.title;
+    title.classList.add('book-title');
     let author = document.createElement('p'); 
     author.textContent = `by ${book.author}`;
+    author.classList.add('book-author');
     let pages = document.createElement('p'); 
     pages.textContent = `${book.pages} pages`;
+    pages.classList.add('book-pages');
     
     bookCard.appendChild(title);
     bookCard.appendChild(author);

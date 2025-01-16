@@ -34,17 +34,18 @@ button {
     border: none;
 }
 
-.container {
+#container {
 
-    height: 100vh;
-
-    /* display: grid;
-    grid-template-rows: 
-    grid-template-columns:  */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
 }
 
 .card {
     border: 1px solid red;
+    border-radius: 1rem;
+    padding: 1.5rem;
 }
 
 .card.finished {
@@ -60,4 +61,16 @@ button {
     height: 480px;
     background-color: rgba(var(--color-on-surface), 0.2);
     color: rgba(var(--color-on-surface));
+    border: none;
+    padding: 20px;
+}
+
+.modal h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.modal .description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
 }
