@@ -46,6 +46,7 @@ button {
     border: 1px solid red;
     border-radius: 1rem;
     padding: 1.5rem;
+    background-color: rgba(var(--color-on-surface), 0.1);
 }
 
 .card.finished {
@@ -57,9 +58,15 @@ button {
 }
 
 .modal {
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     width: 320px;
     height: 480px;
-    background-color: rgba(var(--color-on-surface), 0.2);
+    background-color: rgba(var(--color-on-surface), 0.25);
     color: rgba(var(--color-on-surface));
     border: none;
     padding: 20px;
