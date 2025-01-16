@@ -76,7 +76,7 @@ function createBookCard(book) {
 function displayBookCard(book) {
     // add book card's html to DOM
     console.log(createBookCard(book).outerHTML);
-    const container = document.querySelector('#container');
+    const container = document.querySelector('.card-container');
     const currentBook = createBookCard(book)
     container.appendChild(currentBook);
 }
