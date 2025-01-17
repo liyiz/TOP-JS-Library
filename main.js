@@ -54,7 +54,10 @@ function createBookCard(book) {
     let pages = document.createElement('p'); 
     pages.textContent = `${book.pages} pages`;
     pages.classList.add('book-pages');
-    
+    let checkmark = document.createElement('div');
+    checkmark.innerHTML += '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>check-circle-outline</title><path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M12 20C7.59 20 4 16.41 4 12S7.59 4 12 4 20 7.59 20 12 16.41 20 12 20M16.59 7.58L10 14.17L7.41 11.59L6 13L10 17L18 9L16.59 7.58Z" /></svg>';
+    checkmark.classList.add('checkmark');
+
     bookCard.appendChild(title);
     bookCard.appendChild(author);
     bookCard.appendChild(pages);
@@ -63,8 +66,12 @@ function createBookCard(book) {
 
     // book.read ? bookCard.classList.add('finished') : bookCard.classList.add('unfinished');
     bookCard.classList.add(book.read ? 'finished' : 'unfinished');
+    if (book.read) {
+        bookCard.appendChild(checkmark);
+    }
+    
 
-    // <div class="card">
+    // <div class="card unfinished">
     // <p class="title">title</p>
     // <p class="author">author</p>
     // <p class="pages">pages</p>

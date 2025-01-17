@@ -68,6 +68,19 @@ button.newbook {
     border-radius: 1rem;
     padding: 1.5rem;
     background-color: rgba(var(--color-on-surface), 0.1);
+
+    display: grid;
+}
+
+.card .checkmark {
+    width: 32px;
+    height: 32px;
+    align-self: end;
+    justify-self: end;
+}
+
+.card .checkmark svg {
+    fill: var(--color-secondary);
 }
 
 .card.finished {
