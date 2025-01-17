@@ -146,6 +146,7 @@ button.newbook {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 0.5rem;
 }
 
 .modal .buttons {
@@ -153,6 +154,7 @@ button.newbook {
     justify-content: end;
     align-items: center;
     gap: 1rem;
+    margin: 1rem 0;
 }
 
 .modal button {
