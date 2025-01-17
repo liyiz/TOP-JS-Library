@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded',() => {
     myLibrary.forEach((book) => { displayBookCard(book)});
 
     const addButton = document.getElementById("newbook");
-    const closeButton = document.getElementById("close");
+    const closeButtonIcon = document.getElementById("close");
+    const closeButtonWord = document.getElementById("cancel");
     const dialog = document.getElementById("dialog");
     //dialog.returnValue = "favAnimal"; TODO: how to retrieve info from modal form
     function openCheck(dialog) {
@@ -46,7 +47,12 @@ document.addEventListener('DOMContentLoaded',() => {
     });
     
     // Form close button closes the dialog box
-    closeButton.addEventListener("click", () => {
+    closeButtonIcon.addEventListener("click", () => {
+        dialog.close();
+        openCheck(dialog);
+    });
+    // Form alternate close button closes the dialog box
+    closeButtonWord.addEventListener("click", () => {
         dialog.close();
         openCheck(dialog);
     });
