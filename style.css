@@ -60,7 +60,7 @@ button.newbook {
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(240px, 1fr));
+    grid-auto-rows: auto;
     gap: 30px;
 }
 
@@ -71,11 +71,11 @@ button.newbook {
 }
 
 .card.finished {
-    border-left: 1rem solid var(--color-primary);
+    border-left: 1rem solid var(--color-secondary);
 }
 
 .card.unfinished {
-    border-left: 1rem solid var(--color-secondary);
+    border-left: 1rem solid var(--color-primary);
 }
 
 .modal {
