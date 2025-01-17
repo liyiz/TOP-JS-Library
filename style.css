@@ -59,7 +59,7 @@ button.newbook {
 .card-container {
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-auto-rows: auto;
     gap: 30px;
 }
