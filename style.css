@@ -98,12 +98,12 @@ button.newbook {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 320px;
-    height: 480px;
+    width: 20rem; /* 320px */
+    /* height: 480px; */
     background-color: rgba(var(--color-on-surface), 0.25);
     color: rgba(var(--color-on-surface));
     border: none;
-    padding: 20px;
+    padding: 1rem;
     border-radius: 1rem;
 
 }
@@ -127,24 +127,30 @@ button.newbook {
 
 .modal h1 {
     font-size: 2rem;
-    margin-bottom: 1rem;
 }
 
 .modal .description {
     font-size: 1rem;
-    margin-bottom: 1rem;
 }
 
 .modal form {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: 1fr repeat(4, min-content);
     align-items: center;
+    gap: 1rem;
+
+}
+
+.modal .form-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .modal .buttons {
     display: flex;
-    justify-content: start;
+    justify-content: end;
     align-items: center;
     gap: 1rem;
 }
