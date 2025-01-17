@@ -106,9 +106,6 @@ button.newbook {
     padding: 20px;
     border-radius: 1rem;
 
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: min-content 1fr;
 }
 
 .modal .header {
