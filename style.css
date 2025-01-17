@@ -1,8 +1,8 @@
 :root {
     --color-background: #121212;
-    --color-surface: #121212;
+    --color-surface: 18, 18, 18; /* #121212 */
     --color-error: #cf6679;
-    --color-primary: #bb86fc;
+    --color-primary: 187, 134, 252; /* #bb86fc */
     --color-primary-variant: #3700b3;
     --color-secondary: #03dac5;
     --color-on-primary: #000000;
@@ -45,7 +45,7 @@ button.newbook {
     width: 4rem;
     height: 4rem;
     border-radius: 5rem;
-    background-color: var(--color-primary);
+    background-color: rgb(var(--color-primary));
     color: var(--color-on-surface);
     padding:0.5rem;
 
@@ -88,7 +88,7 @@ button.newbook {
 }
 
 .card.unfinished {
-    border-left: 1rem solid var(--color-primary);
+    border-left: 1rem solid rgb(var(--color-primary));
 }
 
 .modal {
@@ -106,6 +106,16 @@ button.newbook {
     padding: 20px;
     border-radius: 1rem;
 
+}
+
+.modal::backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(var(--color-surface), 0.75);
+    z-index: 0;
 }
 
 .modal .header {
@@ -141,7 +151,7 @@ button.newbook {
 
 .modal button {
     border-radius: 0.5rem;
-    background-color: var(--color-primary);
+    background-color: rgb(var(--color-primary));
     padding: 0.5rem 1rem;
 }
 
