@@ -1,7 +1,5 @@
 
-
-
-const myLibrary = [
+const exampleBooks = [
     {
         author: 'Yaa Gyasi',
         title: 'Homegoing',
@@ -22,20 +20,33 @@ const myLibrary = [
     }
 ];
 
+const myLibrary = [
+
+];
+
 function Book(title, author, pages, read) {
     // the constructor...
     this.author = author; // string
     this.title = title; // string
     this.pages = pages; // number
     this.read = read; // boolean
-    this.toggleRead = function () {
+    this.toggleRead = function() {
         this.read = !this.read;
     };
+    this.info = function() {
+        console.table(this);
+    }
 }
   
 
 document.addEventListener('DOMContentLoaded',() => {
     console.log('Go code, go!');
+
+    // add example books to myLibrary
+    exampleBooks.forEach((book) => { 
+        const currBook = new Book(book.title, book.author, book.pages, book.read);
+        myLibrary.push(currBook);
+    })
 
     // TODO: Create function that will check how many children book container
     // already has and to start looping from that index of the array.
