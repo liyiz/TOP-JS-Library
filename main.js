@@ -154,7 +154,7 @@ function createBookCard(book) {
         console.log(`We should be looking at book id: ${book.id}`);
         book.toggleRead(book.id);
         // Create a function to put this code into like updateIsRead()
-        checkmark.classList.remove('checkmark');
+        bookCard.classList.toggle('isRead', book.read);
     });
 
     let deletebtn = document.createElement('div');
