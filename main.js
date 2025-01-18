@@ -90,13 +90,13 @@ document.addEventListener('DOMContentLoaded',() => {
         const newBookTitle = document.getElementById('title').value;
         const newBookAuthor = document.getElementById('author').value;
         const newBookPages = parseInt(document.getElementById('pages').value);
-        const newBookFinished = document.getElementById('finished').checked;
+        const newBookIsRead = document.getElementById('isRead').checked;
 
         const id = document.querySelector('#cards').childElementCount + 1; //#todohere
 
-        console.log(id, newBookTitle, newBookAuthor, newBookPages, newBookFinished);
+        console.log(id, newBookTitle, newBookAuthor, newBookPages, newBookIsRead);
 
-        addBookToLibrary(id, newBookTitle, newBookAuthor, newBookPages, newBookFinished);
+        addBookToLibrary(id, newBookTitle, newBookAuthor, newBookPages, newBookIsRead);
     })
 
 
@@ -174,12 +174,11 @@ function createBookCard(book) {
     bookCard.appendChild(details);
     bookCard.classList.add('card');
 
-    // book.read ? bookCard.classList.add('finished') : bookCard.classList.add('unfinished');
-    bookCard.classList.add(book.read ? 'finished' : 'unfinished');
+    bookCard.classList.toggle('isRead', book.read);
     bookCard.appendChild(actionbtns);
     
 
-    // <div class="card unfinished">
+    // <div class="card isRead">
     //      <div class="details">
     //          <p class="title">title</p>
     //          <p class="author">author</p>

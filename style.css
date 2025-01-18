@@ -1,5 +1,6 @@
 :root {
     --color-background: #121212;
+    --color-modal: 77 77 77; /* #4d4d4d */
     --color-surface: 18, 18, 18; /* #121212 */
     --color-error: 207, 102, 121; /* #cf6679 */
     --color-primary: 187, 134, 252; /* #bb86fc */
@@ -10,6 +11,7 @@
     --color-on-background: #ffffff;
     --color-on-surface: 255, 255, 255;
     --color-on-error: #000000;
+    
 }
 
 * {
@@ -80,6 +82,20 @@ button.newbook {
 
 }
 
+.card /* not read */ {
+    border-left: 1rem solid rgb(var(--color-on-surface), 0.1);
+}
+
+.card .checkmark {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.card /* not read */ .checkmark svg {
+    fill: rgb(var(--color-on-surface), 0.1);
+}
+
 .card .detals {
     display: grid;
 }
@@ -93,30 +109,14 @@ button.newbook {
     align-items: center;
 }
 
-.card .checkmark {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-}
 
-.card .checkmark svg {
-    fill: var(--color-error);
-}
 
-.card.finished {
+.card.isRead {
     border-left: 1rem solid rgb(var(--color-primary));
 }
 
-.card.finished .checkmark svg {
+.card.isRead .checkmark svg {
     fill: rgb(var(--color-primary));
-}
-
-.card.unfinished {
-    border-left: 1rem solid rgb(var(--color-on-surface), 0.1);
-}
-
-.card.unfinished .checkmark svg {
-    fill: rgb(var(--color-on-surface), 0.1);
 }
 
 .card .deletebtn {
@@ -138,8 +138,8 @@ button.newbook {
 
     width: 20rem; /* 320px */
     /* height: 480px; */
-    background-color: rgba(var(--color-on-surface), 0.25);
-    color: rgba(var(--color-on-surface));
+    background-color: rgb(var(--color-modal));
+    color: rgb(var(--color-on-surface));
     border: none;
     padding: 1rem;
     border-radius: 1rem;
@@ -186,7 +186,7 @@ button.newbook {
     gap: 0.5rem;
 }
 
-.modal .form-field #finished {
+.modal .form-field #isRead {
     align-self: start;
 }
 
