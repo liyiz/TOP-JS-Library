@@ -140,9 +140,7 @@ function createBookCard(book) {
 
     // book.read ? bookCard.classList.add('finished') : bookCard.classList.add('unfinished');
     bookCard.classList.add(book.read ? 'finished' : 'unfinished');
-    if (book.read) {
-        bookCard.appendChild(checkmark);
-    }
+    bookCard.appendChild(checkmark);
     
 
     // <div class="card unfinished">

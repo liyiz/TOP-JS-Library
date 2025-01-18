@@ -86,15 +86,23 @@ button.newbook {
 }
 
 .card .checkmark svg {
-    fill: var(--color-secondary);
+    fill: var(--color-error);
 }
 
 .card.finished {
-    border-left: 1rem solid var(--color-secondary);
+    border-left: 1rem solid rgb(var(--color-primary));
+}
+
+.card.finished .checkmark svg {
+    fill: rgb(var(--color-primary));
 }
 
 .card.unfinished {
-    border-left: 1rem solid rgb(var(--color-primary));
+    border-left: 1rem solid rgb(var(--color-on-surface), 0.1);
+}
+
+.card.unfinished .checkmark svg {
+    fill: rgb(var(--color-on-surface), 0.1);
 }
 
 .modal {
