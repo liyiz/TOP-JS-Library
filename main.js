@@ -41,21 +41,32 @@ document.addEventListener('DOMContentLoaded',() => {
     }
 
     // newbook button opens a modal dialog
-    addButton.addEventListener("click", () => {
+    addButton.addEventListener('click', () => {
         dialog.showModal();
         openCheck(dialog);
     });
     
     // Form close button closes the dialog box
-    closeButtonIcon.addEventListener("click", () => {
+    closeButtonIcon.addEventListener('click', () => {
         dialog.close();
         openCheck(dialog);
     });
     // Form alternate close button closes the dialog box
-    closeButtonWord.addEventListener("click", () => {
+    closeButtonWord.addEventListener('click', () => {
         dialog.close();
         openCheck(dialog);
     });
+
+    
+    const formDetails = document.getElementById('getDetails');
+    formDetails.addEventListener('click', () => {
+        let newBookTitle = document.getElementById('title').value;
+        let newBookAuthor = document.getElementById('author').value;
+        let newBookPages = document.getElementById('pages').value;
+        console.log(newBookTitle, newBookAuthor, newBookPages);
+    })
+
+
 });
 
 
