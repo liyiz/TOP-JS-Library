@@ -24,6 +24,9 @@ html {
 html, body {
     background: var(--color-background);
     color: var(--color-on-background);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 
 ul {
@@ -63,8 +66,9 @@ button.newbook {
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min-content, 320px));
-    grid-template-rows: repeat(auto-fit, minmax(min-content, 320px));
+    grid-auto-rows: 320px;
     gap: 30px;
+    justify-content: center;
 }
 
 .card {
