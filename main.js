@@ -25,6 +25,8 @@ const myLibrary = [
 document.addEventListener('DOMContentLoaded',() => {
     console.log('Go code, go!');
 
+    // TODO: Create function that will check how many children book container
+    // already has and to start looping from that index of the array.
     myLibrary.forEach((book) => { displayBookCard(book)});
 
     const addButton = document.getElementById("newbook");
