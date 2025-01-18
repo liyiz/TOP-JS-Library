@@ -32,10 +32,18 @@ function Book(title, author, pages, read) {
     this.read = read; // boolean
     this.toggleRead = function() {
         this.read = !this.read;
+        // call a function to update the respective book's card in .card-container
+        // updateReadStatus(this, this.read);
     };
     this.info = function() {
         console.table(this);
     }
+}
+
+
+function updateReadStatus(status) {
+    // Will target the correct element to update the checkmark element 
+    // to the correct .finished or .unfinished class
 }
   
 
