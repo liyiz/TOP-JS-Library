@@ -153,6 +153,10 @@ button.newbook {
     gap: 0.5rem;
 }
 
+.modal .form-field #finished {
+    align-self: start;
+}
+
 .modal .buttons {
     display: flex;
     justify-content: end;

@@ -22,7 +22,7 @@ const myLibrary = [
     }
 ];
 
-function Book(author, title, pages, read) {
+function Book(title, author, pages, read) {
     // the constructor...
     this.author = author; // string
     this.title = title; // string
@@ -74,15 +74,21 @@ document.addEventListener('DOMContentLoaded',() => {
         let newBookTitle = document.getElementById('title').value;
         let newBookAuthor = document.getElementById('author').value;
         let newBookPages = document.getElementById('pages').value;
-        console.log(newBookTitle, newBookAuthor, newBookPages);
+        let newBookFinished = document.getElementById('finished').checked;
+        console.log(newBookTitle, newBookAuthor, newBookPages, newBookFinished);
+
+        addBookToLibrary(newBookTitle, newBookAuthor, newBookPages, newBookFinished);
     })
+
 
 
 });
 
 
-function addBookToLibrary() {
-
+function addBookToLibrary(title, author, pages, read) {
+    const newBook = new Book(title, author, pages, read)
+    // add newBook to array
+    console.log(newBook);
 }
 
 function renderBooksToDOM() {
