@@ -1,7 +1,7 @@
 :root {
     --color-background: #121212;
     --color-surface: 18, 18, 18; /* #121212 */
-    --color-error: #cf6679;
+    --color-error: 207, 102, 121; /* #cf6679 */
     --color-primary: 187, 134, 252; /* #bb86fc */
     --color-primary-variant: #3700b3;
     --color-secondary: #03dac5;
@@ -58,9 +58,12 @@ button.newbook {
 
 .card-container {
 
+    height: 100%;
+    width: 100%;
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(min-content, 320px));
+    grid-template-rows: repeat(auto-fit, minmax(min-content, 320px));
     gap: 30px;
 }
 
@@ -69,19 +72,26 @@ button.newbook {
     padding: 1.5rem;
     background-color: rgba(var(--color-on-surface), 0.1);
 
-    position: relative
+    display: grid;
+
 }
 
 .card .detals {
     display: grid;
 }
 
+.card .actionbtns {
+    position: relative;
+    align-self: end;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .card .checkmark {
     width: 32px;
     height: 32px;
-    position: absolute;
-    right: 1.5rem;
-    bottom: 1.5rem;
     cursor: pointer;
 }
 
@@ -103,6 +113,16 @@ button.newbook {
 
 .card.unfinished .checkmark svg {
     fill: rgb(var(--color-on-surface), 0.1);
+}
+
+.card .deletebtn {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.card .deletebtn svg {
+    fill: rgb(var(--color-error));
 }
 
 .modal {
