@@ -36,8 +36,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
     // TODO: Create function that will check how many children book container
     // already has and to start looping from that index of the array.
-    addBookToLibrary();
-    
+    renderBooksToDOM();
 
     const addButton = document.getElementById("newbook");
     const closeButtonIcon = document.getElementById("close");
@@ -83,13 +82,18 @@ document.addEventListener('DOMContentLoaded',() => {
 
 
 function addBookToLibrary() {
-    
+
+}
+
+function renderBooksToDOM() {
+
     const container = document.querySelector('.card-container');
     // Check how many children container has
     const startIndex = container.childElementCount;
     console.log(`card-container has ${startIndex} children`)
     // .slice from the correct index, then .forEach 
     myLibrary.slice(startIndex).forEach((book) => { displayBookCard(book)});
+
 }
 
 function createBookCard(book) {
