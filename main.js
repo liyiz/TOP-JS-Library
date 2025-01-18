@@ -164,8 +164,8 @@ function createBookCard(book) {
 
     let actionbtns = document.createElement('div');
     actionbtns.classList.add('actionbtns');
-    actionbtns.appendChild(checkmark);
     actionbtns.appendChild(deletebtn);
+    actionbtns.appendChild(checkmark);
 
     bookCard.appendChild(details);
     bookCard.classList.add('card');
