@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded',() => {
     formDetails.addEventListener('click', () => {
         let newBookTitle = document.getElementById('title').value;
         let newBookAuthor = document.getElementById('author').value;
-        let newBookPages = document.getElementById('pages').value;
+        let newBookPages = parseInt(document.getElementById('pages').value);
         let newBookFinished = document.getElementById('finished').checked;
         console.log(newBookTitle, newBookAuthor, newBookPages, newBookFinished);
 
@@ -89,6 +89,8 @@ function addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read)
     // add newBook to array
     console.log(newBook);
+    myLibrary.push(newBook);
+    renderBooksToDOM();
 }
 
 function renderBooksToDOM() {
