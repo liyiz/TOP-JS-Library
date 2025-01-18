@@ -69,14 +69,19 @@ button.newbook {
     padding: 1.5rem;
     background-color: rgba(var(--color-on-surface), 0.1);
 
+    position: relative
+}
+
+.card .detals {
     display: grid;
 }
 
 .card .checkmark {
     width: 32px;
     height: 32px;
-    align-self: end;
-    justify-self: end;
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
 }
 
 .card .checkmark svg {
@@ -139,7 +144,6 @@ button.newbook {
     grid-template-rows: 1fr repeat(4, min-content);
     align-items: center;
     gap: 1rem;
-
 }
 
 .modal .form-field {
