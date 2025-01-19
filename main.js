@@ -150,10 +150,10 @@ function createBookCard(book) {
     checkmark.classList.add('checkmark');
     checkmark.setAttribute('data-id', book.id);
     checkmark.addEventListener('click', () => {
+        // Create a function to put this code into like updateIsRead(), in the Book prototype?
         console.log("Time to toggle!");
         console.log(`We should be looking at book id: ${book.id}`);
         book.toggleRead(book.id);
-        // Create a function to put this code into like updateIsRead()
         bookCard.classList.toggle('isRead', book.read);
     });
 
@@ -162,8 +162,13 @@ function createBookCard(book) {
     deletebtn.classList.add('deletebtn');
     deletebtn.setAttribute('data-id', book.id);
     deletebtn.addEventListener('click', () => {
+        // Also put this into its own function maybe
         console.log("Delete button clicked!");
-        // TODO trigger function to delete book - consider adding to Book prototype
+        console.log(`We should be looking at book id: ${book.id}`);
+        // TODO trigger function to delete book - consider adding to Book prototype as shared function?
+        bookCard.remove(); // This does indeed removes the correct element - but I'm not sure how it knows to remove itself TOSTUDY
+        // DOM element is removed, but will also need to remove from myLibrary
+        
     })
 
     let actionbtns = document.createElement('div');
