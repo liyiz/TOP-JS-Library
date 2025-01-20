@@ -168,7 +168,7 @@ function createBookCard(book) {
         // TODO trigger function to delete book - consider adding to Book prototype as shared function?
         bookCard.remove(); // This does indeed removes the correct element - but I'm not sure how it knows to remove itself TOSTUDY
         // DOM element is removed, but will also need to remove from myLibrary
-        
+        // filter the array with a search, then slice or splice the array to remove the deleted book from myLibrary
     })
 
     let actionbtns = document.createElement('div');
