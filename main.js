@@ -166,6 +166,11 @@ function createBookCard(book) {
         console.log("Delete button clicked!");
         console.log(`We should be looking at book id: ${book.id}`);
         // TODO trigger function to delete book - consider adding to Book prototype as shared function?
+
+        const matchedId = myLibrary.find((item) => item.id === book.id);
+        const trueIndex = myLibrary.indexOf(matchedId);
+        myLibrary.splice(trueIndex, 1);
+
         bookCard.remove(); // This does indeed removes the correct element - but I'm not sure how it knows to remove itself TOSTUDY
         // DOM element is removed, but will also need to remove from myLibrary
         // filter the array with a search, then slice or splice the array to remove the deleted book from myLibrary
