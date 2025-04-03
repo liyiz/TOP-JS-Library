@@ -22,23 +22,24 @@ const exampleBooks = [
 
 const myLibrary = [];
 
-function Book(id, title, author, pages, read) {
-    // the constructor...
-    this.id = id;
-    this.author = author; // string
-    this.title = title; // string
-    this.pages = pages; // number
-    this.read = read; // boolean
-    this.toggleRead = function() {
-        this.read = !this.read;
-        // call a function to update the respective book's card in .card-container
-        // updateReadStatus(this, this.read);
-    };
-    this.info = function() {
-        console.table(this);
+class Book {
+    constructor(id, title, author, pages, read) {
+        // the constructor...
+        this.id = id;
+        this.author = author; // string
+        this.title = title; // string
+        this.pages = pages; // number
+        this.read = read; // boolean
+        this.toggleRead = function() {
+            this.read = !this.read;
+            // call a function to update the respective book's card in .card-container
+            // updateReadStatus(this, this.read);
+        };
+        this.info = function() {
+            console.table(this);
+        }
     }
 }
-
 
 function updateReadStatus(status) {
     // Will target the correct element to update the checkmark element 
@@ -47,7 +48,6 @@ function updateReadStatus(status) {
   
 
 document.addEventListener('DOMContentLoaded',() => {
-    console.log('Go code, go!');
 
     // add example books to myLibrary
     exampleBooks.forEach((book, index) => { 
