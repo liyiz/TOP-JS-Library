@@ -30,16 +30,14 @@ class Book {
         this.title = title; // string
         this.pages = pages; // number
         this.read = read; // boolean
-        this.toggleRead = function() {
-            this.read = !this.read;
-        };
-        this.info = function() {
-            console.table(this);
-        }
+    }
+    toggleRead = () => {
+        this.read = !this.read;
+    }
+    info = () => {
+        console.table(this);
     }
 }
-
-  
 
 document.addEventListener('DOMContentLoaded',() => {
 
