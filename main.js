@@ -1,46 +1,65 @@
 
-const exampleBooks = [
-    {
-        author: 'Yaa Gyasi',
-        title: 'Homegoing',
-        pages: 305,
-        read: false
-    },
-    {
-        author: 'R.F. Kuang',
-        title: 'Yellowface',
-        pages: 323,
-        read: true
-    },
-    {
-        author: 'Becky Chambers',
-        title: 'A Psalm for the Wild-Built',
-        pages: 151,
-        read: true
-    }
-];
-
-const myLibrary = [];
-
-class Book {
-    constructor(id, title, author, pages, read) {
-        // the constructor...
-        this.id = id;
-        this.author = author; // string
-        this.title = title; // string
-        this.pages = pages; // number
-        this.read = read; // boolean
-    }
-    toggleRead = () => {
-        this.read = !this.read;
-    }
-    info = () => {
-        console.table(this);
-    }
-}
-
 const BookManager = ( function() {
     // all functions to do with managing book data
+    const myLibrary = [];
+    const exampleBooks = [
+        {
+            author: 'Yaa Gyasi',
+            title: 'Homegoing',
+            pages: 305,
+            read: false
+        },
+        {
+            author: 'R.F. Kuang',
+            title: 'Yellowface',
+            pages: 323,
+            read: true
+        },
+        {
+            author: 'Becky Chambers',
+            title: 'A Psalm for the Wild-Built',
+            pages: 151,
+            read: true
+        }
+    ];
+
+    class Book {
+        constructor(id, title, author, pages, read) {
+            // the constructor...
+            this.id = id;
+            this.author = author; // string
+            this.title = title; // string
+            this.pages = pages; // number
+            this.read = read; // boolean
+        }
+        toggleRead = () => {
+            this.read = !this.read;
+        }
+        info = () => {
+            console.table(this);
+        }
+    }
+
+    const init = () => {
+        console.log("working out are we")
+        // add example books to myLibrary
+        exampleBooks.forEach((book, index) => { 
+            addBookToLibrary(index, book.title, book.author, book.pages, book.read);
+        })
+    }
+
+    const addBookToLibrary = (id, title, author, pages, read) => {
+        const newBook = new Book(id, title, author, pages, read)
+        // add newBook to array
+        console.log(newBook);
+        myLibrary.push(newBook);
+        console.table(myLibrary)
+        // renderBooksToDOM();
+    }
+
+    return {
+        init
+    }
 })();
 
 const BookCardRender = ( function() {
@@ -49,55 +68,55 @@ const BookCardRender = ( function() {
 
 document.addEventListener('DOMContentLoaded',() => {
 
-    // add example books to myLibrary
-    exampleBooks.forEach((book, index) => { 
-        addBookToLibrary(index, book.title, book.author, book.pages, book.read);
-    })
+    // BookCardRender.initEvents(); // initialise all UI event listeners
+    BookManager.init();
 
-    const addButton = document.getElementById("newbook");
-    const closeButtonIcon = document.getElementById("close");
-    const closeButtonWord = document.getElementById("cancel");
-    const dialog = document.getElementById("dialog");
-    //dialog.returnValue = "favAnimal"; TODO: how to retrieve info from modal form
-    function openCheck(dialog) {
-        if (dialog.open) {
-          console.log("Dialog open");
-        } else {
-          console.log("Dialog closed");
-        }
-    }
 
-    // newbook button opens a modal dialog
-    addButton.addEventListener('click', () => {
-        dialog.showModal();
-        openCheck(dialog);
-    });
+
+    // const addButton = document.getElementById("newbook");
+    // const closeButtonIcon = document.getElementById("close");
+    // const closeButtonWord = document.getElementById("cancel");
+    // const dialog = document.getElementById("dialog");
+    // //dialog.returnValue = "favAnimal"; TODO: how to retrieve info from modal form
+    // function openCheck(dialog) {
+    //     if (dialog.open) {
+    //       console.log("Dialog open");
+    //     } else {
+    //       console.log("Dialog closed");
+    //     }
+    // }
+
+    // // newbook button opens a modal dialog
+    // addButton.addEventListener('click', () => {
+    //     dialog.showModal();
+    //     openCheck(dialog);
+    // });
     
-    // Form close button closes the dialog box
-    closeButtonIcon.addEventListener('click', () => {
-        dialog.close();
-        openCheck(dialog);
-    });
-    // Form alternate close button closes the dialog box
-    closeButtonWord.addEventListener('click', () => {
-        dialog.close();
-        openCheck(dialog);
-    });
+    // // Form close button closes the dialog box
+    // closeButtonIcon.addEventListener('click', () => {
+    //     dialog.close();
+    //     openCheck(dialog);
+    // });
+    // // Form alternate close button closes the dialog box
+    // closeButtonWord.addEventListener('click', () => {
+    //     dialog.close();
+    //     openCheck(dialog);
+    // });
 
     
-    const formDetails = document.getElementById('getDetails');
-    formDetails.addEventListener('click', () => {
-        const newBookTitle = document.getElementById('title').value;
-        const newBookAuthor = document.getElementById('author').value;
-        const newBookPages = parseInt(document.getElementById('pages').value);
-        const newBookIsRead = document.getElementById('isRead').checked;
+    // const formDetails = document.getElementById('getDetails');
+    // formDetails.addEventListener('click', () => {
+    //     const newBookTitle = document.getElementById('title').value;
+    //     const newBookAuthor = document.getElementById('author').value;
+    //     const newBookPages = parseInt(document.getElementById('pages').value);
+    //     const newBookIsRead = document.getElementById('isRead').checked;
 
-        const id = document.querySelector('#cards').childElementCount + 1; //#todohere
+    //     const id = document.querySelector('#cards').childElementCount + 1; //#todohere
 
-        console.log(id, newBookTitle, newBookAuthor, newBookPages, newBookIsRead);
+    //     console.log(id, newBookTitle, newBookAuthor, newBookPages, newBookIsRead);
 
-        addBookToLibrary(id, newBookTitle, newBookAuthor, newBookPages, newBookIsRead);
-    })
+    //     addBookToLibrary(id, newBookTitle, newBookAuthor, newBookPages, newBookIsRead);
+    // })
 
 
 
