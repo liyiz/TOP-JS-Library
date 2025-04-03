@@ -39,6 +39,14 @@ class Book {
     }
 }
 
+const BookManager = ( function() {
+    // all functions to do with managing book data
+})();
+
+const BookCardRender = ( function() {
+    // all functions to do with rendering book cards
+})();
+
 document.addEventListener('DOMContentLoaded',() => {
 
     // add example books to myLibrary
