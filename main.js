@@ -24,6 +24,7 @@ const BookManager = ( function() {
     ];
 
     class Book {
+
         constructor(id, title, author, pages, read) {
             // the constructor...
             this.id = id;
@@ -38,23 +39,39 @@ const BookManager = ( function() {
         info = () => {
             console.table(this);
         }
+        
     }
 
     const init = () => {
+
         console.log("working out are we")
         // add example books to myLibrary
         exampleBooks.forEach((book, index) => { 
             addBookToLibrary(index, book.title, book.author, book.pages, book.read);
         })
+
     }
 
     const addBookToLibrary = (id, title, author, pages, read) => {
+
         const newBook = new Book(id, title, author, pages, read)
         // add newBook to array
         console.log(newBook);
         myLibrary.push(newBook);
         console.table(myLibrary)
-        // renderBooksToDOM();
+        renderBooksToDOM();
+
+    }
+
+    const renderBooksToDOM = () => {
+
+        const container = document.querySelector('#cards');
+        // Check how many children container has
+        const startIndex = container.childElementCount;
+        console.log(`card-container has ${startIndex} children`)
+        // .slice from the correct index, then .forEach 
+        myLibrary.slice(startIndex).forEach((book) => { displayBookCard(book)});
+    
     }
 
     return {
@@ -123,24 +140,22 @@ document.addEventListener('DOMContentLoaded',() => {
 });
 
 
-function addBookToLibrary(id, title, author, pages, read) {
-    const newBook = new Book(id, title, author, pages, read)
-    // add newBook to array
-    console.log(newBook);
-    myLibrary.push(newBook);
-    renderBooksToDOM();
-}
+// function addBookToLibrary(id, title, author, pages, read) {
+//     const newBook = new Book(id, title, author, pages, read)
+//     // add newBook to array
+//     console.log(newBook);
+//     myLibrary.push(newBook);
+//     renderBooksToDOM();
+// }
 
-function renderBooksToDOM() {
-
-    const container = document.querySelector('#cards');
-    // Check how many children container has
-    const startIndex = container.childElementCount;
-    console.log(`card-container has ${startIndex} children`)
-    // .slice from the correct index, then .forEach 
-    myLibrary.slice(startIndex).forEach((book) => { displayBookCard(book)});
-
-}
+// function renderBooksToDOM() {
+//     const container = document.querySelector('#cards');
+//     // Check how many children container has
+//     const startIndex = container.childElementCount;
+//     console.log(`card-container has ${startIndex} children`)
+//     // .slice from the correct index, then .forEach 
+//     myLibrary.slice(startIndex).forEach((book) => { displayBookCard(book)});
+// }
 
 function createBookCard(book) {
     // create book card html from object data
@@ -222,7 +237,7 @@ function createBookCard(book) {
 
 function displayBookCard(book) {
     // add book card's html to DOM
-    console.log(createBookCard(book).outerHTML);
+    // console.log(createBookCard(book).outerHTML);
     const container = document.querySelector('#cards');
     const currentBook = createBookCard(book)
     container.appendChild(currentBook);
