@@ -23,8 +23,8 @@ const exampleBooks = [
 const myLibrary = [];
 
 class Book {
-    constructor(id, title, author, pages, read) {
-        this.id = id;
+    constructor(title, author, pages, read) {
+        this.id = this.createUUID;
         this.author = author; // string
         this.title = title; // string
         this.pages = pages; // number
@@ -39,13 +39,24 @@ class Book {
         this.read = !this.read;
     }
 
+    createUUID () {
+        return this.uuidv4();
+    }
+
+    uuidv4 () {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+
 }  
 
 const init = () => {
 
     // add example books to myLibrary
-    exampleBooks.forEach((book, index) => { 
-        addBookToLibrary(index, book.title, book.author, book.pages, book.read);
+    exampleBooks.forEach((book) => { 
+        addBookToLibrary(book.title, book.author, book.pages, book.read);
     })
 
     const addButton = document.getElementById("newbook");
@@ -89,13 +100,13 @@ const init = () => {
 
         console.log(id, newBookTitle, newBookAuthor, newBookPages, newBookIsRead);
 
-        addBookToLibrary(id, newBookTitle, newBookAuthor, newBookPages, newBookIsRead);
+        addBookToLibrary(newBookTitle, newBookAuthor, newBookPages, newBookIsRead);
     })
 
 }
 
-function addBookToLibrary(id, title, author, pages, read) {
-    const newBook = new Book(id, title, author, pages, read)
+function addBookToLibrary(title, author, pages, read) {
+    const newBook = new Book(title, author, pages, read)
     // add newBook to array
     console.log(newBook);
     myLibrary.push(newBook);
@@ -198,5 +209,10 @@ function displayBookCard(book) {
     const currentBook = createBookCard(book)
     container.appendChild(currentBook);
 }
+
+/// Utility functions ///
+
+
+
 
 document.addEventListener('DOMContentLoaded',init);
