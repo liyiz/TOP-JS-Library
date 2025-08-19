@@ -39,16 +39,9 @@ class Book {
         this.read = !this.read;
     }
 
-}
+}  
 
-function updateReadStatus(status) {
-    // Will target the correct element to update the checkmark element 
-    // to the correct .finished or .unfinished class
-}
-  
-
-document.addEventListener('DOMContentLoaded',() => {
-    console.log('Go code, go!');
+const init = () => {
 
     // add example books to myLibrary
     exampleBooks.forEach((book, index) => { 
@@ -84,7 +77,6 @@ document.addEventListener('DOMContentLoaded',() => {
         dialog.close();
         openCheck(dialog);
     });
-
     
     const formDetails = document.getElementById('getDetails');
     formDetails.addEventListener('click', () => {
@@ -100,10 +92,7 @@ document.addEventListener('DOMContentLoaded',() => {
         addBookToLibrary(id, newBookTitle, newBookAuthor, newBookPages, newBookIsRead);
     })
 
-
-
-});
-
+}
 
 function addBookToLibrary(id, title, author, pages, read) {
     const newBook = new Book(id, title, author, pages, read)
@@ -209,3 +198,5 @@ function displayBookCard(book) {
     const currentBook = createBookCard(book)
     container.appendChild(currentBook);
 }
+
+document.addEventListener('DOMContentLoaded',init);
