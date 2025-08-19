@@ -59,6 +59,12 @@ const init = () => {
         addBookToLibrary(book.title, book.author, book.pages, book.read);
     })
 
+    setupEvents();
+
+}
+
+function setupEvents() {
+
     const addButton = document.getElementById("newbook");
     const closeButtonIcon = document.getElementById("close");
     const closeButtonWord = document.getElementById("cancel");
@@ -96,13 +102,8 @@ const init = () => {
         const newBookPages = parseInt(document.getElementById('pages').value);
         const newBookIsRead = document.getElementById('isRead').checked;
 
-        const id = document.querySelector('#cards').childElementCount + 1; //#todohere
-
-        console.log(id, newBookTitle, newBookAuthor, newBookPages, newBookIsRead);
-
         addBookToLibrary(newBookTitle, newBookAuthor, newBookPages, newBookIsRead);
-    })
-
+    });
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -127,8 +128,7 @@ function renderBooksToDOM() {
 function createBookCard(book) {
     // create book card html from object data
     let bookCard = document.createElement('div');
-    // Set a unique id number to help reference it? Is that needed? 
-    // bookCard.setAttribute('data-id', '');
+    bookCard.setAttribute('data-id', book.id);
     
     let title = document.createElement('p'); 
     title.textContent = book.title;
@@ -149,7 +149,6 @@ function createBookCard(book) {
     let checkmark = document.createElement('div');
     checkmark.innerHTML += '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>check-circle-outline</title><path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M12 20C7.59 20 4 16.41 4 12S7.59 4 12 4 20 7.59 20 12 16.41 20 12 20M16.59 7.58L10 14.17L7.41 11.59L6 13L10 17L18 9L16.59 7.58Z" /></svg>';
     checkmark.classList.add('checkmark');
-    checkmark.setAttribute('data-id', book.id);
     checkmark.addEventListener('click', () => {
         // Create a function to put this code into like updateIsRead(), in the Book prototype?
         console.log("Time to toggle!");
@@ -161,7 +160,6 @@ function createBookCard(book) {
     let deletebtn = document.createElement('div');
     deletebtn.innerHTML += '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>delete-circle-outline</title><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M16,10V17A1,1 0 0,1 15,18H9A1,1 0 0,1 8,17V10H16M13.5,6L14.5,7H17V9H7V7H9.5L10.5,6H13.5Z" /></svg>';
     deletebtn.classList.add('deletebtn');
-    deletebtn.setAttribute('data-id', book.id);
     deletebtn.addEventListener('click', () => {
         // Also put this into its own function maybe
         console.log("Delete button clicked!");
@@ -208,13 +206,6 @@ function displayBookCard(book) {
     const container = document.querySelector('#cards');
     const currentBook = createBookCard(book)
     container.appendChild(currentBook);
-}
-
-/// Utility functions ///
-
-
-window.library = function() {
-    console.dir(myLibrary);
 }
 
 document.addEventListener('DOMContentLoaded',init);
