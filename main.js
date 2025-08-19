@@ -24,7 +24,7 @@ const myLibrary = [];
 
 class Book {
     constructor(title, author, pages, read) {
-        this.id = this.createUUID;
+        this.id = this.createUUID();
         this.author = author; // string
         this.title = title; // string
         this.pages = pages; // number
@@ -213,6 +213,8 @@ function displayBookCard(book) {
 /// Utility functions ///
 
 
-
+window.library = function() {
+    console.dir(myLibrary);
+}
 
 document.addEventListener('DOMContentLoaded',init);
