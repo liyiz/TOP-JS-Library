@@ -141,9 +141,7 @@ function createBookCard(book) {
     pages.classList.add('book-pages');
     let details = document.createElement('div');
     details.classList.add('details');
-    details.appendChild(title);
-    details.appendChild(author);
-    details.appendChild(pages);
+    details.append(title, author, pages);
 
 
     let checkmark = document.createElement('div');
@@ -177,15 +175,11 @@ function createBookCard(book) {
 
     let actionbtns = document.createElement('div');
     actionbtns.classList.add('actionbtns');
-    actionbtns.appendChild(deletebtn);
-    actionbtns.appendChild(checkmark);
+    actionbtns.append(deletebtn, checkmark);
 
-    bookCard.appendChild(details);
     bookCard.classList.add('card');
-
     bookCard.classList.toggle('isRead', book.read);
-    bookCard.appendChild(actionbtns);
-    
+    bookCard.append(details, actionbtns);
 
     // <div class="card isRead">
     //      <div class="details">
@@ -197,6 +191,7 @@ function createBookCard(book) {
     //          <svg></svg>
     //      </div>
     // </div>
+
     return bookCard;
 }
 
@@ -205,7 +200,7 @@ function displayBookCard(book) {
     console.log(createBookCard(book).outerHTML);
     const container = document.querySelector('#cards');
     const currentBook = createBookCard(book)
-    container.appendChild(currentBook);
+    container.append(currentBook);
 }
 
 document.addEventListener('DOMContentLoaded',init);
