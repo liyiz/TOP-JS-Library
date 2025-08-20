@@ -1,7 +1,5 @@
-
-
-let storage; // holds data from localStorage api
-let appData; // holds app data
+let storageData = {}; // holds data from localStorage api - it is parsed in init()
+let appData = {}; // holds app data
 
 class Book {
     constructor(title, author, pages, read) {
@@ -40,9 +38,19 @@ const init = () => {
         console.log("We have localStorage available")
         console.log("Yes we also have correct data in localStorage");
         const fetched = getLocalStorage().getItem('userData');
-        appData = parseData(fetched);
+
+        // create new objects with storageData
+        storageData = parseData(fetched);
+
+        // set newly created objects to appData
+        appData.myLibrary = storageData.myLibrary.map((data) => {
+            return new Book(data.title, data.author, data.pages, data.read);
+        });
+
         console.dir(appData);
-        renderBooksToDOM();
+
+        renderBooksToDOM(); // Rendering already called in addBookToLibrary()
+
     } else if (storageAvailable('localStorage') && !isUserData()) { // 2. Check if the data in localStorage exists
         console.log("We only have localStorage available");
         firstTimeDataSetup();
