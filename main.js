@@ -1,26 +1,7 @@
 
-const exampleBooks = [
-    {
-        author: 'Yaa Gyasi',
-        title: 'Homegoing',
-        pages: 305,
-        read: false
-    },
-    {
-        author: 'R.F. Kuang',
-        title: 'Yellowface',
-        pages: 323,
-        read: true
-    },
-    {
-        author: 'Becky Chambers',
-        title: 'A Psalm for the Wild-Built',
-        pages: 151,
-        read: true
-    }
-];
 
-const myLibrary = [];
+let storage; // holds data from localStorage api
+let appData; // holds app data
 
 class Book {
     constructor(title, author, pages, read) {
@@ -54,13 +35,74 @@ class Book {
 
 const init = () => {
 
+    // 1. Check if localStorage exists
+    if (storageAvailable('localStorage') && isUserData()) {
+        console.log("We have localStorage available")
+        console.log("Yes we also have correct data in localStorage");
+        const fetched = getLocalStorage().getItem('userData');
+        appData = parseData(fetched);
+        console.dir(appData);
+        renderBooksToDOM();
+    } else if (storageAvailable('localStorage') && !isUserData()) { // 2. Check if the data in localStorage exists
+        console.log("We only have localStorage available");
+        firstTimeDataSetup();
+        // getLocalStorage().setItem('userData', JSON.stringify(appData));
+    } else {
+        // if there is no data nor local storage availability, then initialise fresh appData and provide error message in console
+        // todo: add a more explicit warning to user that data will not persist beyond session
+        console.error("App will run, but there will be no data saved.")
+        firstTimeDataSetup();
+    }
+
+    setupEvents();
+
+}
+
+function firstTimeDataSetup() {
+    const exampleBooks = [
+        {
+            author: 'Yaa Gyasi',
+            title: 'Homegoing',
+            pages: 305,
+            read: false
+        },
+        {
+            author: 'R.F. Kuang',
+            title: 'Yellowface',
+            pages: 323,
+            read: true
+        },
+        {
+            author: 'Becky Chambers',
+            title: 'A Psalm for the Wild-Built',
+            pages: 151,
+            read: true
+        }
+    ];
+
+    appData = {
+        "myLibrary": []
+    };
     // add example books to myLibrary
     exampleBooks.forEach((book) => { 
         addBookToLibrary(book.title, book.author, book.pages, book.read);
     })
+}
 
-    setupEvents();
+function isUserData() {
+        if (getLocalStorage().getItem("userData") != null) {
+            return true;
+        } else {
+            return false;
+        }
+}
 
+function parseData(value) {
+    try {
+        return  JSON.parse(value);
+    } catch (e) {
+        console.error("there was no data");
+    }
 }
 
 function setupEvents() {
@@ -110,8 +152,9 @@ function addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read)
     // add newBook to array
     console.log(newBook);
-    myLibrary.push(newBook);
+    appData.myLibrary.push(newBook);
     renderBooksToDOM();
+    updateLocalStorage();
 }
 
 function renderBooksToDOM() {
@@ -121,7 +164,7 @@ function renderBooksToDOM() {
     const startIndex = container.childElementCount;
     console.log(`card-container has ${startIndex} children`)
     // .slice from the correct index, then .forEach 
-    myLibrary.slice(startIndex).forEach((book) => { displayBookCard(book)});
+    appData.myLibrary.slice(startIndex).forEach((book) => { displayBookCard(book) });
 
 }
 
@@ -151,8 +194,9 @@ function createBookCard(book) {
         // Create a function to put this code into like updateIsRead(), in the Book prototype?
         console.log("Time to toggle!");
         console.log(`We should be looking at book id: ${book.id}`);
-        book.toggleRead(book.id);
+        book.toggleRead();
         bookCard.classList.toggle('isRead', book.read);
+        updateLocalStorage();
     });
 
     let deletebtn = document.createElement('div');
@@ -164,9 +208,10 @@ function createBookCard(book) {
         console.log(`We should be looking at book id: ${book.id}`);
         // TODO trigger function to delete book - consider adding to Book prototype as shared function?
 
-        const matchedId = myLibrary.find((item) => item.id === book.id);
-        const trueIndex = myLibrary.indexOf(matchedId);
-        myLibrary.splice(trueIndex, 1);
+        const matchedId = appData.myLibrary.find((item) => item.id === book.id);
+        const trueIndex = appData.myLibrary.indexOf(matchedId);
+        appData.myLibrary.splice(trueIndex, 1);
+        updateLocalStorage();
 
         bookCard.remove(); // This does indeed removes the correct element - but I'm not sure how it knows to remove itself TOSTUDY
         // DOM element is removed, but will also need to remove from myLibrary
@@ -199,8 +244,34 @@ function displayBookCard(book) {
     // add book card's html to DOM
     console.log(createBookCard(book).outerHTML);
     const container = document.querySelector('#cards');
-    const currentBook = createBookCard(book)
+    const currentBook = createBookCard(book);
     container.append(currentBook);
+}
+
+function storageAvailable(type) {
+    let storage;
+    try {
+        storage = window[type];
+        const x = "__storage_test__";
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    } catch (e) {
+        return (
+            e instanceof DOMException &&
+            e.name === "QuoteaExceededError" &&
+            storage &&
+            storage.length !== 0
+        );
+    }
+}
+
+function getLocalStorage() {
+    return window['localStorage'];
+}
+
+function updateLocalStorage() {
+    getLocalStorage().setItem('userData', JSON.stringify(appData));
 }
 
 document.addEventListener('DOMContentLoaded',init);
